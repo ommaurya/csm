@@ -54,6 +54,8 @@ class NodeStatusPlugin(IPlugin):
                 if platform == 'crs':
                     node, type, plim, state, config_state = states
                 else:
+                    if len(states)==3:
+                      states.append("")
                     node, type, state, config_state = states
                 entry = {
                     'type': type,
@@ -82,6 +84,7 @@ class NodeStatusPlugin(IPlugin):
             'DISABLED',
             'UNPOWERED',
             'ADMIN DOWN',
+            'SEOS-READY',
             'NOT ALLOW ONLIN',
         ]
         for key, value in inventory.items():
